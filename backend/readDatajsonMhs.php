@@ -1,6 +1,6 @@
 <?php
 $mysqli = new mysqli("localhost","user","password","namaDB");
-
+///   user, password dan namaDB di sesuaikan dengan buatan anda sendiri
 if ($mysqli -> connect_errno) {
   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
   exit();
