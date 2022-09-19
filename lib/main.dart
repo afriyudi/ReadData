@@ -147,7 +147,7 @@ return Container(
                   //    topRight: Radius.circular(8.0),
                    // ),
                    // child: Image.network(
-                    //    "https://elearning.binadarma.ac.id/pluginfile.php/1/theme_lambda/logo/1602057627/ubd_logo.png"
+                    //    "https://gambar.com/theme_lambda/logo/1602057627/ubd_logo.png"
                     //    width: 100,
                      //   height: 50,
                         //fit:BoxFit.fill
@@ -157,7 +157,7 @@ return Container(
             
           ListTile(
            //leading: Image.network(
-             //   "https://elearning.binadarma.ac.id/pluginfile.php/1/theme_lambda/logo/1602057627/ubd_logo.png",
+             //   "https://gambar.com/theme_lambda/logo/1602057627/ubd_logo.png",
              // ),
             title: Text(data[index].nim, style: TextStyle(color: Colors.white)),
             subtitle: Text(data[index].nama, style: TextStyle(color: Colors.white)),
