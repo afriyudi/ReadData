@@ -1,7 +1,7 @@
 # program untuk menampilkan data di flutter melalui flutlab.io  untuk akses Database MySql
 
  ada perubahan/perbaikan source program yang lama di folder /lib menyesuaikan dengan versi flutter, ada juga perubahan file  pubspec.yaml, perubahan environment dari
-  sdk: ">=2.1.0 <3.0.0"  menjadi sdk: ">=2.12.0 <3.0.0", perubahan pada dipendencies menjadi http: ^0.13.5
+  sdk: ">=2.1.0 <3.0.0"  menjadi sdk: ">=2.12.0 <3.0.0", perubahan pada dipendencies dari http: ^0.12.2  menjadi http: ^0.13.5
  
 #  tanggal 19 Sept 2022
 - file main.dart new flutter
