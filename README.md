@@ -1,16 +1,17 @@
-# ada perubahan/perbaikan source program di folder /lib menyesuaikan dengan versi flutter
+# program untuk menampilkan data di flutter melalui flutlab.io  untuk akses Database MySql
+
+ ada perubahan/perbaikan source program yang lama di folder /lib menyesuaikan dengan versi flutter
+ 
 #  tanggal 19 Sept 2022
 - file main.dart new
 - file mainold.dart old source
+
+- folder backend berisi query mysql dan program php untuk menampilkan data mhs
+
 # program sederhana untuk menampilkan data mysql di flutter
 
-## Getting Started
-
-folder backend berisi query mysql dan program php untuk menampilkan data mhs
-
-folder lib berisi program utama
-
-- file main.dart adalah  program revisi
-- file mainold.dart program flutter yg lama
-
 ![alt text](https://github.com/afriyudi/ReadData/blob/master/gambar/progflutter.png "jalanya program di browser")
+
+- program dapat di lihat di  https://dartpad.dev/?id=b1e5a6b2860139b68085be82c82b0161
+- program ini mengakses database mysql di https://testflutterku.000webhostapp.com/readDatajsonMhs.php
+
