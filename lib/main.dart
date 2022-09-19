@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-//import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart'; // alternatif 1
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,10 +10,10 @@ Future<List<Mhs>> fetchMhss(http.Client client) async {
       await client.get(Uri.parse('https://testflutterku.000webhostapp.com/readDatajsonMhs.php'));
 
   // Use the compute function to run parseMhss in a separate isolate.
-//  return compute(parseMhss, response.body);
-      var message = jsonDecode(response.body).cast<Map<String, dynamic>>();
-    print(response.body);
-     return message.map<Mhs>((json) => Mhs.fromJson(json)).toList();
+ // return compute(parseMhss, response.body);  // alternatif 1
+      var message = jsonDecode(response.body).cast<Map<String, dynamic>>(); // alternatif 2
+    print(response.body);      // alternatif 2
+     return message.map<Mhs>((json) => Mhs.fromJson(json)).toList();  // alternatif 2
 
 }
 
@@ -90,7 +90,7 @@ class MyHomePage extends StatelessWidget {
           
           if (snapshot.hasData) {
             print("ada datanya");
-            return  MhssList(mhsData: snapshot.data); // tampilkan data  ver 1
+            return  MhssList(mhsData: snapshot.data); // tampilkan data  
           }
           else if(snapshot.hasError)  {   // jika ada error
               print(snapshot);
@@ -108,9 +108,9 @@ class MyHomePage extends StatelessWidget {
                 }
 
           else {
-       //    return const Center(child: CircularProgressIndicator(backgroundColor: Colors.red, strokeWidth: 8,));
-             return const Center(child: LinearProgressIndicator( backgroundColor: Colors.cyanAccent,  
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.red), ));
+       //    return const Center(child: CircularProgressIndicator(backgroundColor: Colors.red, strokeWidth: 8,));  //alternatif 1 
+             return const Center(child: LinearProgressIndicator( backgroundColor: Colors.cyanAccent,      // alternatif 2
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.red), ));                               // alternatif 2
           }
         }
         
