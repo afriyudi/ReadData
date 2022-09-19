@@ -1,16 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Mhs>> fetchMhss(http.Client client) async {
   final response =
-      await client.get(Uri.parse('https://testflutterku.000webhostapp.com/readDatajson.php'));
+      await client.get(Uri.parse('https://testflutterku.000webhostapp.com/readDatajsonMhs.php'));
 
   // Use the compute function to run parseMhss in a separate isolate.
-  return compute(parseMhss, response.body);
+//  return compute(parseMhss, response.body);
+      var message = jsonDecode(response.body).cast<Map<String, dynamic>>();
+    print(response.body);
+     return message.map<Mhs>((json) => Mhs.fromJson(json)).toList();
+
 }
 
 // A function that converts a response body into a List<Mhs>.
@@ -65,24 +69,62 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: FutureBuilder<List<Mhs>>(
+      body: 
+      /* FutureBuilder<List<Mhs>>(
         future: fetchMhss(http.Client()),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+ if (snapshot.hasError) {
+            print(snapshot.error);
+          } 
           return snapshot.hasData
               ? MhssList(MhsData: snapshot.data)
               : Center(child: CircularProgressIndicator());
         },
-      ),
-    );
+      ),   */
+      
+      
+       FutureBuilder<List<Mhs>>(
+        future: fetchMhss(http.Client()),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          
+          if (snapshot.hasData) {
+            print("ada datanya");
+            return  MhssList(MhsData: snapshot.data); // tampilkan data  ver 1
+          }
+          else if(snapshot.hasError)  {   // jika ada error
+              print(snapshot);
+                  return Column(
+                    children:<Widget> [
+                      Center(
+                          child: Text("error : "+
+                    snapshot.error.toString(),
+                    style:const TextStyle(
+                        fontFamily: 'regular',
+                        fontSize: 18,
+                        color: Colors.black),
+                  ))
+                    ],
+                  );
+                }
+
+          else {
+       //    return const Center(child: CircularProgressIndicator(backgroundColor: Colors.red, strokeWidth: 8,));
+             return const Center(child: LinearProgressIndicator( backgroundColor: Colors.cyanAccent,  
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.red), ));
+          }
+        }
+        
+       // );
+       
+         )
+      );
   }
 }
 
 class MhssList extends StatelessWidget {
   final List<Mhs>? MhsData;
 
-  MhssList({Key? key, List<Mhs>? this.MhsData}) : super(key: key);
+  MhssList({Key? key, required this.MhsData}) : super(key: key);
 
 
 
