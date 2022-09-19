@@ -49,7 +49,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Data Mahasiswa ubd';
+    String appTitle = 'Data Mahasiswa ubd';
 
     return MaterialApp(
       title: appTitle,
@@ -58,10 +58,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class MyHomePage extends StatelessWidget {
   final String title;
 
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,15 +90,14 @@ class MyHomePage extends StatelessWidget {
           
           if (snapshot.hasData) {
             print("ada datanya");
-            return  MhssList(MhsData: snapshot.data); // tampilkan data  ver 1
+            return  MhssList(mhsData: snapshot.data); // tampilkan data  ver 1
           }
           else if(snapshot.hasError)  {   // jika ada error
               print(snapshot);
                   return Column(
                     children:<Widget> [
                       Center(
-                          child: Text("error : "+
-                    snapshot.error.toString(),
+                          child: Text("error : ${snapshot.error.toString()}",
                     style:const TextStyle(
                         fontFamily: 'regular',
                         fontSize: 18,
@@ -122,15 +122,15 @@ class MyHomePage extends StatelessWidget {
 }
 
 class MhssList extends StatelessWidget {
-  final List<Mhs>? MhsData;
+  final List<Mhs>? mhsData;
 
-  MhssList({Key? key, required this.MhsData}) : super(key: key);
+  const MhssList({Key? key, required this.mhsData}) : super(key: key);
 
 
 
 Widget viewData(var data,int index)
 {
-return Container(
+return SizedBox(
     width: 200,
     child: Card(
       shape: RoundedRectangleBorder(
@@ -147,7 +147,7 @@ return Container(
                   //    topRight: Radius.circular(8.0),
                    // ),
                    // child: Image.network(
-                    //    "https://gambar.com/theme_lambda/logo/1602057627/ubd_logo.png"
+                    //    "https://elearning.binadarma.ac.id/pluginfile.php/1/theme_lambda/logo/1602057627/ubd_logo.png"
                     //    width: 100,
                      //   height: 50,
                         //fit:BoxFit.fill
@@ -157,10 +157,10 @@ return Container(
             
           ListTile(
            //leading: Image.network(
-             //   "https://gambar.com/theme_lambda/logo/1602057627/ubd_logo.png",
+             //   "https://elearning.binadarma.ac.id/pluginfile.php/1/theme_lambda/logo/1602057627/ubd_logo.png",
              // ),
-            title: Text(data[index].nim, style: TextStyle(color: Colors.white)),
-            subtitle: Text(data[index].nama, style: TextStyle(color: Colors.white)),
+            title: Text(data[index].nim, style:const TextStyle(color: Colors.white)),
+            subtitle: Text(data[index].nama, style:const TextStyle(color: Colors.white)),
           ),
           ButtonTheme(
             child: ButtonBar(
@@ -185,12 +185,12 @@ return Container(
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
-      itemCount: MhsData?.length,
+      itemCount: mhsData?.length,
       itemBuilder: (context, index) {
-        return viewData(MhsData,index);
+        return viewData(mhsData,index);
       },
     );
   }
