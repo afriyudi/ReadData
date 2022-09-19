@@ -1,7 +1,7 @@
 # ada perubahan/perbaikan source program di folder /lib menyesuaikan dengan versi flutter
 #  tanggal 19 Sept 2022
-#  file main.dart new
-#  file mainold.dart old source
+- file main.dart new
+- file mainold.dart old source
 # program sederhana untuk menampilkan data mysql di flutter
 
 ## Getting Started
